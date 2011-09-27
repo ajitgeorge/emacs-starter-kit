@@ -10,3 +10,19 @@
 
 (add-to-list 'load-path "~/foss/go/misc/emacs" t)
 (require 'go-mode-load)
+
+;; scala-mode
+; ageorge@wud-ageorge01:~/foss/scala-tool-support$ svn info
+; Path: .
+; URL: http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk
+; Repository Root: http://lampsvn.epfl.ch/svn-repos/scala
+; Repository UUID: 5e8d7ff9-d8ef-0310-90f0-a4852d11357a
+; Revision: 25743
+; Node Kind: directory
+; Schedule: normal
+; Last Changed Author: cunei
+; Last Changed Rev: 24032
+; Last Changed Date: 2011-01-20 09:32:51 -0600 (Thu, 20 Jan 2011)
+; 
+(add-to-list 'load-path (concat (getenv "HOME") "/foss/scala-tool-support/src/emacs"))
+(require 'scala-mode-auto)
