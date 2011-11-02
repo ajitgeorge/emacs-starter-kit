@@ -27,20 +27,4 @@
 (add-to-list 'load-path (concat (getenv "HOME") "/foss/scala-tool-support/src/emacs"))
 (require 'scala-mode-auto)
 
-;; ENSIME
-; ageorge@wud-ageorge01:~/foss$ git clone https://github.com/aemoncannon/ensime.git
-; ...
-; ageorge@wud-ageorge01:~/foss$ cd ensime/
-; ageorge@wud-ageorge01:~/foss/ensime (scala-2.9)$ git rev-parse HEAD
-; 400e9933411eec610c8f689a2f473453c143464d
-;; Load the ensime lisp code...
-(add-to-list 'load-path (concat (getenv "HOME") "/foss/ensime/src/main/elisp")) ; new ENSIME dists
-(add-to-list 'load-path (concat (getenv "HOME") "/foss/ensime/elisp")) ; jjoyce-hacked old ensime dist
-(require 'ensime)
-;; This step causes the ensime-mode to be started whenever
-;; scala-mode is started for a buffer. You may have to customize this step
-;; if you're not using the standard scala mode.
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-;; MINI HOWTO: 
-;; Open .scala file. M-x ensime (once per project)
-
+(windmove-default-keybindings)
