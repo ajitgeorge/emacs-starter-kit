@@ -27,4 +27,9 @@
 (add-to-list 'load-path (concat (getenv "HOME") "/foss/scala-tool-support/src/emacs"))
 (require 'scala-mode-auto)
 
-(windmove-default-keybindings)
+;; key bindings for moving between buffers
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
+
