@@ -34,8 +34,15 @@
 (global-set-key (kbd "C-c <down>")  'windmove-down)
 
 ;; python
+
 ; sudo apt-get install python-ropemacs
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")   
 (setq ropemacs-enable-autoimport t)
+
+;; anything
+(require 'anything-config)
+(require 'anything-match-plugin)
+(global-set-key "\C-ca" 'anything)
+(global-set-key "\C-ce" 'anything-for-files)
 
