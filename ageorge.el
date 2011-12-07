@@ -23,7 +23,7 @@
 ; Last Changed Author: cunei
 ; Last Changed Rev: 24032
 ; Last Changed Date: 2011-01-20 09:32:51 -0600 (Thu, 20 Jan 2011)
-; 
+;
 (add-to-list 'load-path (concat (getenv "HOME") "/foss/scala-tool-support/src/emacs"))
 (require 'scala-mode-auto)
 
@@ -37,7 +37,7 @@
 
 ; sudo apt-get install python-ropemacs
 (require 'pymacs)
-(pymacs-load "ropemacs" "rope-")   
+(pymacs-load "ropemacs" "rope-")
 (setq ropemacs-enable-autoimport t)
 
 ;; anything
@@ -46,3 +46,14 @@
 (global-set-key "\C-ca" 'anything)
 (global-set-key "\C-ce" 'anything-for-files)
 
+;; Flymake/pyflakes
+(when (load "flymake" t)
+ (defun flymake-pyflakes-init ()
+ (let* ((temp-file (flymake-init-create-temp-buffer-copy
+ 'flymake-create-temp-inplace))
+ (local-file (file-relative-name
+ temp-file
+ (file-name-directory buffer-file-name))))
+ (list "pyflakes" (list local-file))))
+
+ (add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pyflakes-init)))
