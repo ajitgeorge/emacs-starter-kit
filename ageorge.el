@@ -6,7 +6,7 @@
  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 93 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
 
 (global-set-key [C-f9] 'compile)
-;; (global-set-key [C-c C-/] 'comment-or-uncomment-region)
+(global-set-key [C-c C-/] 'comment-or-uncomment-region)
 
 (add-to-list 'load-path "~/foss/go/misc/emacs" t)
 (require 'go-mode-load)
@@ -76,3 +76,6 @@
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+;; full-ack (installed via ELPA)
+(setq ack-executable  "ack-grep")
