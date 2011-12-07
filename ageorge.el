@@ -58,9 +58,22 @@
 
  (add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pyflakes-init)))
 
+(add-hook 'python-mode-hook 
+      (lambda () 
+        (unless (eq buffer-file-name nil) (flymake-mode 1)) ;dont invoke flymake on temporary buffers for the interpreter
+        (local-set-key [f2] 'flymake-goto-prev-error)
+        (local-set-key [f3] 'flymake-goto-next-error)
+        ))
+
 ;; Uniquify
 (setq uniquify-buffer-name-style 'reverse)
 (setq uniquify-separator "/")
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
 
-(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers (or Gnus mail buffers)
+; don't muck with special buffers (or Gnus mail buffers)
+(setq uniquify-ignore-buffers-re "^\\*")
+
+;; sudo apt-get install python-mode
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
