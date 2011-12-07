@@ -33,7 +33,7 @@
 (global-set-key (kbd "C-c <up>")    'windmove-up)
 (global-set-key (kbd "C-c <down>")  'windmove-down)
 
-;; python
+;; A number of python-suitable config ripped from http://jasonmbaker.com/7-tools-for-working-with-python-in-emacs-and
 
 ; sudo apt-get install python-ropemacs
 (require 'pymacs)
@@ -57,3 +57,10 @@
  (list "pyflakes" (list local-file))))
 
  (add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pyflakes-init)))
+
+;; Uniquify
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
+
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers (or Gnus mail buffers)
