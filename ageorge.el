@@ -44,9 +44,10 @@
 ;; A number of python-suitable config ripped from http://jasonmbaker.com/7-tools-for-working-with-python-in-emacs-and
 
 ; sudo apt-get install python-ropemacs
-(require 'pymacs)
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
+(if  (require 'pymacs nil 'no-error)
+    (progn
+      (pymacs-load "ropemacs" "rope-")
+      (setq ropemacs-enable-autoimport t)))
 
 ;; anything
 (require 'anything-config)
