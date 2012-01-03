@@ -1,3 +1,4 @@
+;; colors
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -5,11 +6,19 @@
   ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 93 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
 
+;; keys
 (global-set-key [C-f9] 'compile)
 (global-set-key [C-c C-/] 'comment-or-uncomment-region)
 
-(add-to-list 'load-path "~/foss/go/misc/emacs" t)
-(require 'go-mode-load)
+;; utility functions
+(defun require-if-exists (symbol path)
+  (if (file-exists-p path)
+      (progn
+        (add-to-list 'load-path path t)
+        (require symbol))))
+
+;; Go
+(require-if-exists 'go-mode-load "~/foss/go/misc/emacs")
 
 ;; scala-mode
 ; ageorge@wud-ageorge01:~/foss/scala-tool-support$ svn info
@@ -24,8 +33,7 @@
 ; Last Changed Rev: 24032
 ; Last Changed Date: 2011-01-20 09:32:51 -0600 (Thu, 20 Jan 2011)
 ;
-(add-to-list 'load-path (concat (getenv "HOME") "/foss/scala-tool-support/src/emacs"))
-(require 'scala-mode-auto)
+(require-if-exists 'scala-mode-auto "~/foss/scala-tool-support/src/emacs")
 
 ;; key bindings for moving between buffers
 (global-set-key (kbd "C-c <left>")  'windmove-left)
