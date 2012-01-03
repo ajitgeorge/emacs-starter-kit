@@ -17,6 +17,13 @@
         (add-to-list 'load-path path t)
         (require symbol))))
 
+(defun chomp (str)
+  "Chomp leading and tailing whitespace from STR."
+  (while (string-match "\\`\n+\\|^\\s-+\\|\\s-+$\\|\n+\\'"
+                       str)
+    (setq str (replace-match "" t t str)))
+  str)
+
 ;; Go
 (require-if-exists 'go-mode-load "~/foss/go/misc/emacs")
 
@@ -121,3 +128,9 @@ and source-file directory for your debugger."
   (setq comint-prompt-regexp "^(Pdb) *")
   (setq paragraph-start comint-prompt-regexp)
   (run-hooks 'pdb-mode-hook))
+
+;; Include host name in frame title
+(setq machine-host-name (chomp (shell-command-to-string "hostname")))
+(defun prefix-with-hostname (format-str)
+  (concat "@" machine-host-name ": " format-str))
+(setq frame-title-format `(buffer-file-name ,(prefix-with-hostname "%f") ,(prefix-with-hostname "%b")))
