@@ -49,7 +49,7 @@
       (pymacs-load "ropemacs" "rope-")
       (setq ropemacs-enable-autoimport t)))
 
-;; anything
+;; anything (human-mapcar install-from-elpa 'anything 'anything-config 'anything-match-plugin)
 (require 'anything-config)
 (require 'anything-match-plugin)
 (global-set-key "\C-ca" 'anything)
